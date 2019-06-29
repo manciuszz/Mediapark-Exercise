@@ -12,12 +12,12 @@ private val TAB_TITLES = arrayOf(
 )
 
 class TabsAdapter(private val context: Context, fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
+    private val TAB_COUNT = 2
     override fun getItem(position: Int): Fragment = when (position) {
         0 -> ListFragment()
         else -> MapFragment().also { fragMap -> fragMap.getMapAsync(fragMap) }
     }
 
     override fun getPageTitle(position: Int): CharSequence? = context.resources.getString(TAB_TITLES[position])
-    override fun getCount(): Int = 2
+    override fun getCount(): Int = TAB_COUNT
 }
