@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MediaparkExercise</string>
     <string name="test_string">Hello World</string>
+    <string name="title_activity_tabs">Tabs</string>
+    <string name="list_tab_title">List</string>
+    <string name="maps_tab_title">Map</string>
+
+    <string name="list_msg">List tab</string>
+    <string name="maps_msg">Maps tab</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
