@@ -15,7 +15,7 @@ class TabsAdapter(private val context: Context, fm: FragmentManager) : FragmentP
 
     override fun getItem(position: Int): Fragment = when (position) {
         0 -> ListFragment()
-        else -> MapsFragment()
+        else -> MapFragment().also { fragMap -> fragMap.getMapAsync(fragMap) }
     }
 
     override fun getPageTitle(position: Int): CharSequence? = context.resources.getString(TAB_TITLES[position])
