@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MediaparkExercise</string>
+    <string name="test_string">Hello World</string>
 </resources>
