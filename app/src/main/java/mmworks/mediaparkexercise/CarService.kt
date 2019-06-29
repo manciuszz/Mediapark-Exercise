@@ -7,13 +7,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 interface ICarListener {
-    fun update(cars: List<Model.Car>)
+    fun update(cars: List<APIModel.Car>)
 }
 
 interface CarService {
 
     @GET("mobile/public/availablecars")
-    fun getCars(): Observable<List<Model.Car>>
+    fun getCars(): Observable<List<APIModel.Car>>
 
     companion object {
         private const val BASE_URL = "https://development.espark.lt/api/"

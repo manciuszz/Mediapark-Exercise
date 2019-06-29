@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity() {
         viewpager_main.adapter = TabsAdapter(this, supportFragmentManager)
         tabs_main.setupWithViewPager(viewpager_main)
 
-        consumeCars()
+        fetchCars()
     }
 
-    private fun consumeCars() {
+    private fun fetchCars() {
         disposable = apiServe.getCars()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

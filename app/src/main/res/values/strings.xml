@@ -5,7 +5,8 @@
     <string name="list_tab_title">List</string>
     <string name="maps_tab_title">Map</string>
 
-    <string name="list_msg">List tab</string>
-    <string name="maps_msg">Maps tab</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="no_title">No title</string>
+    <string name="no_plate">No plate</string>
+    <string name="no_address">No address</string>
+    <string name="car_photo">Car photo</string>
 </resources>

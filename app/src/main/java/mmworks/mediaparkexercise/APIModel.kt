@@ -1,6 +1,6 @@
 package mmworks.mediaparkexercise
 
-object Model {
+object APIModel {
     data class Car(
         val batteryEstimatedDistance: Double,
         val batteryPercentage: Int,
