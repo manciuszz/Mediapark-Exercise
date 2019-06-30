@@ -4,6 +4,7 @@
     <string name="title_activity_tabs">Tabs</string>
     <string name="list_tab_title">List</string>
     <string name="maps_tab_title">Map</string>
+    <string name="filter_tab_title">Filter</string>
 
     <string name="no_title">No title</string>
     <string name="no_plate">No plate</string>
