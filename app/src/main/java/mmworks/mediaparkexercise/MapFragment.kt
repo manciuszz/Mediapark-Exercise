@@ -1,4 +1,4 @@
-package mmworks.mediaparkexercise.ui.main
+package mmworks.mediaparkexercise
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,9 +9,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import mmworks.mediaparkexercise.APIModel
-import mmworks.mediaparkexercise.CarViewModel
-import mmworks.mediaparkexercise.MainActivity
 
 class MapFragment : SupportMapFragment(), OnMapReadyCallback {
     private lateinit var carsViewModel: CarViewModel

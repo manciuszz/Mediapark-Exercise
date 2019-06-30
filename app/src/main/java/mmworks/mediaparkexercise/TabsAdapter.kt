@@ -1,11 +1,9 @@
-package mmworks.mediaparkexercise.ui.main
+package mmworks.mediaparkexercise
 
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.util.Log
-import mmworks.mediaparkexercise.R
 
 private val TAB_TITLES = arrayOf(
     R.string.list_tab_title,

@@ -2,7 +2,6 @@ package mmworks.mediaparkexercise
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import mmworks.mediaparkexercise.ui.main.TabsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

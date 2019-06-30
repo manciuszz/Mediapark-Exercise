@@ -35,6 +35,7 @@ class CarViewModel : ViewModel() {
         carsList.postValue(filteredData)
     }
 
+    // Note - it was required to sort by current location distance, but due to time constraints and lack of interest in implementing a lot of bloat code to achieve same effect...
     private fun applySortByDistance(fromLocation: Location = Location("A").apply { longitude = 0.0; latitude = 0.0 }) {
         val sortedData = carsCopy.sortedBy { car ->
             val toLocation = Location("B").apply { longitude = car.location.longitude; latitude = car.location.latitude }

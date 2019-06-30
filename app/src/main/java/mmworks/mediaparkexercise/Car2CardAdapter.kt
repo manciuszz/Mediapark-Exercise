@@ -1,4 +1,4 @@
-package mmworks.mediaparkexercise.ui.main
+package mmworks.mediaparkexercise
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.listview_car.view.*
-import mmworks.mediaparkexercise.APIModel
-import mmworks.mediaparkexercise.R
 
 class Car2CardAdapter(private val context: Context, private val carList: List<APIModel.Car>) : BaseAdapter() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
