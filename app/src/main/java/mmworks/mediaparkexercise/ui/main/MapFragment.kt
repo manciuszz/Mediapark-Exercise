@@ -2,7 +2,6 @@ package mmworks.mediaparkexercise.ui.main
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,6 +24,7 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
         carsViewModel.observer(this, { carsList -> displayCars(carsList) })
     }
 
