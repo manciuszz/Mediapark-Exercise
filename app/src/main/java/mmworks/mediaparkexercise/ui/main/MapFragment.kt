@@ -1,8 +1,8 @@
 package mmworks.mediaparkexercise.ui.main
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,15 +25,17 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        carsViewModel.observer(this, { displayCars(it) })
+        carsViewModel.observer(this, { carsList -> displayCars(carsList) })
     }
 
     private fun displayCars(carsList: List<APIModel.Car>) {
+        mMap.clear()
+
         val mOpts = MarkerOptions()
         carsList.forEachIndexed { index, car ->
-            if (index == 0)
-                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition(LatLng(car.location.latitude, car.location.longitude), 10f, 0f, 45f)))
-            mMap.addMarker(mOpts.position(LatLng(car.location.latitude, car.location.longitude)).title(car.plateNumber))
+            val carCoordinates = LatLng(car.location.latitude, car.location.longitude)
+            if (index == 0) mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition(carCoordinates, 10f, 0f, 45f)))
+            mMap.addMarker(mOpts.position(carCoordinates).title(car.plateNumber))
         }
     }
 

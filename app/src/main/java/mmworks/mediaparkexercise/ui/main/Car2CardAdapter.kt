@@ -34,8 +34,8 @@ class Car2CardAdapter(private val context: Context, private val carList: List<AP
         rowView.card_car_title.text = car.model.title
         rowView.card_car_plate.text = car.plateNumber
         rowView.card_car_address.text = car.location.address
-        Picasso.with(context).load(car.model.photoUrl).into(rowView.card_car_photo)
-
+        if ((car.model.photoUrl).isNotEmpty())
+            Picasso.with(context).load(car.model.photoUrl).into(rowView.card_car_photo)
         return rowView
     }
 

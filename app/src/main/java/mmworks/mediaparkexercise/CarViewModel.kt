@@ -16,6 +16,7 @@ class CarViewModel : ViewModel() {
         CarService.create()
     }
     private val carsList: MutableLiveData<List<APIModel.Car>> = MutableLiveData()
+    private lateinit var carsCopy: List<APIModel.Car>
 
     private fun subscribe(): MutableLiveData<List<APIModel.Car>> {
         if (!carsList.hasActiveObservers())
@@ -23,10 +24,20 @@ class CarViewModel : ViewModel() {
         return carsList
     }
 
-    fun observer(context: LifecycleOwner, callback: (carsList: List<APIModel.Car>) -> Unit) {
+    fun observer(context: LifecycleOwner, callbackFn: (carsList: List<APIModel.Car>) -> Unit) {
         subscribe().observe(context, Observer {
-            carsList -> callback(carsList!!)
+            carsList -> callbackFn(carsList!!)
         })
+    }
+
+    fun applyFilter(query: String = "") {
+        if (query.isEmpty())
+            return loadCars()
+
+        val filteredData = carsCopy.filter {
+            car -> car.plateNumber.toLowerCase() == query.toLowerCase() || (query.toIntOrNull()?.let { car.batteryPercentage <= it } ?: false)
+        }
+        carsList.postValue(filteredData)
     }
 
     private fun loadCars() {
@@ -34,7 +45,9 @@ class CarViewModel : ViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                cars -> carsList.postValue(cars)
+                cars ->
+                    carsCopy = cars
+                    carsList.postValue(cars)
             },{
                 error -> Log.d("CarViewModel", error.toString())
             })

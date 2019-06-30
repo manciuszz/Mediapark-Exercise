@@ -6,6 +6,7 @@
     <string name="maps_tab_title">Map</string>
     <string name="filter_tab_title">Filter</string>
 
+    <string name="search_query_hint">Ex.: TEST40, 50...</string>
     <string name="no_title">No title</string>
     <string name="no_plate">No plate</string>
     <string name="no_address">No address</string>
