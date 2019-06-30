@@ -10,6 +10,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import mmworks.mediaparkexercise.APIModel
 import mmworks.mediaparkexercise.CarViewModel
 import mmworks.mediaparkexercise.MainActivity
 
@@ -24,17 +25,16 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        displayCars()
+        carsViewModel.observer(this, { displayCars(it) })
     }
 
-    private fun displayCars() {
-        carsViewModel.subscribe().observe(this, Observer {
-            carsList ->
-                carsList?.forEachIndexed { index, car ->
-                    if (index == 0) mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition(LatLng(car.location.latitude, car.location.longitude), 10f, 0f, 45f)))
-                    mMap.addMarker(MarkerOptions().position(LatLng(car.location.latitude, car.location.longitude)).title(car.plateNumber))
-                }
-        })
+    private fun displayCars(carsList: List<APIModel.Car>) {
+        val mOpts = MarkerOptions()
+        carsList.forEachIndexed { index, car ->
+            if (index == 0)
+                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition(LatLng(car.location.latitude, car.location.longitude), 10f, 0f, 45f)))
+            mMap.addMarker(mOpts.position(LatLng(car.location.latitude, car.location.longitude)).title(car.plateNumber))
+        }
     }
 
 }

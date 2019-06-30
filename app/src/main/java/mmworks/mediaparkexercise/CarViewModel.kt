@@ -1,7 +1,10 @@
 package mmworks.mediaparkexercise
 
+import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
+import android.content.Context
 import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -14,10 +17,16 @@ class CarViewModel : ViewModel() {
     }
     private val carsList: MutableLiveData<List<APIModel.Car>> = MutableLiveData()
 
-    fun subscribe(): MutableLiveData<List<APIModel.Car>> {
+    private fun subscribe(): MutableLiveData<List<APIModel.Car>> {
         if (!carsList.hasActiveObservers())
             loadCars()
         return carsList
+    }
+
+    fun observer(context: LifecycleOwner, callback: (carsList: List<APIModel.Car>) -> Unit) {
+        subscribe().observe(context, Observer {
+            carsList -> callback(carsList!!)
+        })
     }
 
     private fun loadCars() {
